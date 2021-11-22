@@ -1,0 +1,37 @@
+<div class="login-page-component">
+  <div class="login-page-header">
+    <div class="login-title" i18n='header|Login page header'>Let's Log In</div>
+  </div>
+  <div class="login-page-body" [ngClass]="'background-' + background">
+    <div class="login-form">
+      <img class="login-logo" src="/assets/images/logo.svg">
+      <div class="login-hint" i18n="login-hint|Login hint">Sign into your account</div>
+      <input 
+        name="username" 
+        class="login-input" 
+        [class.error]="!isUsernameValid"
+        [(ngModel)]="username" 
+        (focus)="usernameVisited = true"
+      />
+      <input 
+        name="password" 
+        class="login-input" 
+        type="password" 
+        [class.error]="!isPasswordValid"
+        [(ngModel)]="password"  
+        (focus)="passwordVisited = true"
+      />
+      <div class="login-actions">
+        <a [routerLink]="'/' + routerPath.singleSignOn" i18n="single sign on|Single sign on text">Single Sign On</a>
+        <a [routerLink]="'/' + routerPath.resetPassword" i18n="reset password|Reset password text">Forgotten your password?</a>
+      </div>
+      <button 
+        i18n="login-btn|Login button text"
+        class="login-btn"
+        [class.disabled]="!isLoginEnabled"
+        [disabled]="!isLoginEnabled"
+        (click)="login()"
+      >Login</button>
+    </div>
+  </div>
+</div>
